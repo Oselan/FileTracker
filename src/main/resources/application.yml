@@ -1,0 +1,50 @@
+spring: 
+  sql:
+    init.mode: embedded
+  h2:
+    console.enabled: true
+  datasource:
+     url: jdbc:h2:mem:testdb;INIT=CREATE SCHEMA IF NOT EXISTS testdb;
+     driver-class-name: org.h2.Driver
+     username: sa
+     password: password
+     hikari:
+       maximumPoolSize: ${DATASOURCE_MAX_POOL_SIZE:2}
+  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    defer-datasource-initialization: true
+    open-in-view: false 
+    hibernate:
+      ddl-auto: update  
+    properties:
+      hibernate: 
+        default_schema: testdb
+        format_sql: true
+      show-sql: true
+springdoc:
+  api-docs:
+    enabled: ${SWAGGER_ENABLED:true}
+    path: '/api-docs'
+  swagger-ui:
+    tags-sorter: alpha    
+    enabled: ${SWAGGER_UI_ENABLED:true}
+    path: '/swagger-ui'
+    
+    
+logging:
+  level:
+    org.hibernate.type: INFO
+    org.hibernate.SQL: DEBUG
+    
+    
+app:
+  file-tracker: 
+    store-path: C:\WORKSPACE\OSELAN\FileTracker\file-store
+    #number of months to keep files  
+    retention-months: 2
+    #Run at 11 pm every day 0 0 23 * * ? (every 5 mins use 0 */5 * ? * *)
+    purge-cron-exp: ${APP_PURGE_CRON_EXP:0 */1 * ? * *} 
+    #max number of files allowed per hour
+    max-errors-per-hour: 50
+     
+    

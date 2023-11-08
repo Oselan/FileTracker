@@ -1,0 +1,22 @@
+{"properties": [
+  {
+    "name": "app.file-tracker.store-path",
+    "type": "java.lang.String",
+    "description": "Location where files generated will be stored"
+  },
+  {
+    "name": "app.file-tracker.max-errors-per-hour",
+    "type": "java.lang.String",
+    "description": "Max number of errors allowed per hour before rejecting generation of same file type"
+  },
+  {
+    "name": "app.file-tracker.purge-cron-exp",
+    "type": "java.lang.String",
+    "description": "Cron expression to purge old files"
+  },
+  {
+    "name": "app.file-tracker.retention-months",
+    "type": "java.lang.String",
+    "description": "Number of months to keep older files"
+  }
+]}
